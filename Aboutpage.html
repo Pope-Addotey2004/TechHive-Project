@@ -10,40 +10,102 @@
 
 
 <body>
-  <div class="navbar">
-    <img src="Pictures/company-logo.jpg" alt="company logo">
-   <ul>
-     <li><a>Contact</a> </li>
-     <li><a>Our Service</a> </li>
-     <li><a>Home</a></li>
+  <nav class="navbar">
+    <img src="Pictures/company-logo1.png" alt="company logo" class="logo">
+   <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+     <li><a href="#">Contact</a> </li>
+     <li><a href="#">Our Service</a> </li> 
+     <button class="close-btn">&times;</button>
     </ul>
- </div>
+    <div class="burger">
+      <i class="fas fa-bars"></i>
+    </div>
+  </nav>
 
 
   <section class="header">
-  <h1>About Us</h1>
+    <div class="header-content">
+       <h1>About Us</h1>
+       <p><a href="#">Home</a> &gt; About Us</p>
+    </div>
+ 
   </section>
 
   <div class="container">
- <div class="about">
-  <p class="text">A building is an establishment of one's own legacy and an inheritance for the next generation. In creating a home, we build to suit our family size and needs. However, as time passes, our choices and aspirations evolve. What was once a perfect mansion can become cumbersome, and maintaining it can turn into a daunting task. 
+ <!-- <div class="about"> -->
+  <section class="mission-vision">
+  <div class="mission">
+    <h2>Our Mission</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam, quis asperiores numquam suscipit atque perspiciatis. Explicabo vero sint consectetur aut consequuntur blanditiis nisi asperiores! Voluptatem architecto voluptatum ratione asperiores facilis!</p>
+  </div>
+  <div class="divider"></div>
+  <div class="vision">
+    <h2>Our Vision</h2>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore qui veritatis impedit. Enim iste praesentium eligendi, itaque, nesciunt odit autem atque quae hic aspernatur modi, earum assumenda cumque blanditiis maiores!</p>
+  </div>
+</section>
+
+  <div class="stats-section">
+    <div class="stat-card">
+      <div class="stat">
+        <h3>200+</h3>
+        <p>Employees</p>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat">
+        <h3>2000+</h3>
+        <p>Projects Worked On</p>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat">
+        <h3>15+</h3>
+        <p>Years of Experience</p>
+      </div>
+    </div>
+  </div>
+  <section class="text">
+  <h1 class="ending">Who Are We?</h1>
+  <h2 class="ending"></h2>
+  <p>A building is an establishment of one's own legacy and an inheritance for the next generation. In creating a home, we build to suit our family size and needs. However, as time passes, our choices and aspirations evolve. What was once a perfect mansion can become cumbersome, and maintaining it can turn into a daunting task. 
 
     Break and Build Ltd. is here to provide solutions when you face these challenges. We specialize in building homes tailored for pensioners, ensuring comfort, accessibility, and peace of mind in your golden years. Our expertise also extends to the sale of high-quality construction equipment, offering everything you need for your building projects. Additionally, we provide a reliable and skilled workforce for hire, ensuring that every construction job is completed with precision and care.
     
     At Break and Build, we understand that your home is more than just a structure; it is a part of your legacy. Let us help you build a future that reflects your dreams and adapts to your changing needs.
     </p>
-  <p class="ending"> MOTTO</p>
-  <p class="ending">Building into the next generation</p>
+  </section>
+
+  <section class="worker-profiles-section">
+    <h2>Meet Our Bosses</h2>
+  <div class="worker-profiles">
+   
+    <div class="worker">
+      <img src="Pictures/buildings4.jpg" alt="Worker 1" class="profile-pic">
+      <h3>Nana Opoku Prempeh</h3>
+      <p>CEO</p>
+    </div>
+    <div class="worker">
+      <img src="Pictures/buildings5.jpg" alt="Worker 2" class="profile-pic">
+      <h3>Osei Tutu</h3>
+      <p>Managing Director</p>
+    </div>
+    <div class="worker">
+      <img src="Pictures/buildings7.jpg" alt="Worker 3" class="profile-pic">
+      <h3>Dr. Naana Arkoful</h3>
+      <p>Secretary</p>
+    </div>
+  </div>
+</section>
+
 </div>
 
-
-</div>
-</body>
 
 
 <div class="footer">
   <div>
-    <p class="name">Break and Build Channels</p>
+    <p class="name">Building into the next generation.</p>
   </div>
 <div class="socials">
   <a href="https://www.facebook.com" class="fab fa-facebook-f"></a>
@@ -59,6 +121,75 @@
 </div>
 </div>
 
+
+<script>
+  window.addEventListener('load', () => {
+      document.querySelector('.header-content').classList.add('animate');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const burger = document.querySelector('.burger');
+    const navLinks = document.querySelector('.nav-links');
+    const closeBtn = document.querySelector('.close-btn');
+    const body = document.body;
+    const missionVisionSection = document.querySelector('.mission-vision');
+    const statCards = document.querySelectorAll('.stat-card');
+    const textSection = document.querySelector('.text');
+    const workerProfilesSection = document.querySelector('.worker-profiles-section');
+
+    burger.addEventListener('click', () => {
+    navLinks.classList.toggle('nav-active');
+    body.classList.toggle('nav-active');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    navLinks.classList.remove('nav-active');
+    body.classList.remove('nav-active');
+  });
+
+    const handleScroll = () => {
+      const sectionTop = missionVisionSection.getBoundingClientRect().top;
+      const sectionBottom = missionVisionSection.getBoundingClientRect().bottom;
+      const triggerPoint = window.innerHeight / 1.3;
+
+      if (sectionTop < triggerPoint && sectionBottom > 0) {
+        missionVisionSection.classList.add('visible');
+      } else {
+        missionVisionSection.classList.remove('visible');
+      }
+
+      statCards.forEach((card, index) => {
+        const cardTop = card.getBoundingClientRect().top;
+        if (cardTop < window.innerHeight) {
+          setTimeout(() => {
+            card.classList.add('visible');
+          }, index * 150); // Delay each card by 200ms
+        } else {
+          card.classList.remove('visible');
+        }
+      });
+
+       const textTop = textSection.getBoundingClientRect().top;
+      if (textTop < window.innerHeight) {
+        textSection.classList.add('visible');
+      } else {
+        textSection.classList.remove('visible');
+      }
+
+      const workerProfilesTop = workerProfilesSection.getBoundingClientRect().top;
+      if (workerProfilesTop < window.innerHeight) {
+        workerProfilesSection.classList.add('visible');
+      } else {
+        workerProfilesSection.classList.remove('visible');
+      }
+      
+    };
+
+
+    window.addEventListener('scroll', handleScroll);
+  });
+</script>
+</body>
 </html>
 
 
