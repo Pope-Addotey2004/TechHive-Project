@@ -17,7 +17,10 @@ header {
   margin-top: -10px;
   margin-left: -20px;
 }
-
+.homediv:hover{
+  color: orange;
+  text-decoration: underline;
+}
 .logo img {
   height: 70px;
 }
